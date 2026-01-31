@@ -2,10 +2,11 @@ import "./globals.css";
 import type { Metadata } from "next";
 import TopLoader from "@/components/TopLoader";
 import RouteTransition from "@/components/RouteTransition";
+import PinGate from "@/components/PinGate";
 
 export const metadata: Metadata = {
   title: "Nosso Refúgio",
-  description: "Refúgio do casal — amor, fé e alegria.",
+  description: "Amor, fé e cuidado.",
 };
 
 export default function RootLayout({
@@ -17,7 +18,9 @@ export default function RootLayout({
     <html lang="pt-br">
       <body className="min-h-screen bg-white text-zinc-900 antialiased">
         <TopLoader />
-        <RouteTransition>{children}</RouteTransition>
+        <PinGate>
+          <RouteTransition>{children}</RouteTransition>
+        </PinGate>
       </body>
     </html>
   );
