@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 
 type Item = {
@@ -28,12 +27,13 @@ export default function GalleryModal({ items }: { items: Item[] }) {
             key={i}
             onClick={() => setIndex(i)}
             className="group relative aspect-16/10 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50"
+            aria-label={img.caption ? `Abrir foto: ${img.caption}` : "Abrir foto"}
           >
-            <Image
+            <img
               src={img.src}
               alt={img.caption ?? "Foto"}
-              fill
-              className="object-cover transition group-hover:scale-[1.03]"
+              className="h-full w-full object-cover transition group-hover:scale-[1.03]"
+              loading="lazy"
             />
           </button>
         ))}
@@ -46,16 +46,16 @@ export default function GalleryModal({ items }: { items: Item[] }) {
             <button
               onClick={close}
               className="absolute right-2 top-2 z-10 rounded-full bg-black/60 px-3 py-2 text-white"
+              aria-label="Fechar"
             >
               ✕
             </button>
 
-            <Image
+            <img
               src={items[index].src}
-              alt="Foto ampliada"
-              width={1600}
-              height={1000}
+              alt={items[index].caption ?? "Foto ampliada"}
               className="w-full rounded-3xl object-contain"
+              loading="eager"
             />
 
             {items[index].caption && (
