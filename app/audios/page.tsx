@@ -11,19 +11,19 @@ const AUDIOS = [
   {
     id: "a1",
     label: "1 — “Que tal um cover do Justin Bieber? kkkk”",
-    src: `${BASE}/audio/audio_01.mp3`,
+    src: `${BASE}/audio/audio_1.mp3`,
   },
   {
     id: "a2",
     label:
       "2 — “Que tal ouvir você mesma de quando um dia tudo era oração e sonho?”",
-    src: `${BASE}/audio/audio_02.mp3`,
+    src: `${BASE}/audio/audio_2.mp3`,
   },
   {
     id: "a3",
     label:
       "3 — “Que tal um dueto dos crentes, cristãos e evangélicos mais bregas de New Iguaçu? kkkk”",
-    src: `${BASE}/audio/audio_03.mp3`,
+    src: `${BASE}/audio/audio_3.mp3`,
   },
 ];
 
