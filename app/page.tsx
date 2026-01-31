@@ -6,6 +6,8 @@ import SectionBox from "@/components/SectionBox";
 import { CONFIG } from "@/content/config";
 import { MESSAGES } from "@/content/messages";
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 function dayOfYear(d: Date) {
   const start = new Date(d.getFullYear(), 0, 0);
   const diff = d.getTime() - start.getTime();
@@ -24,7 +26,7 @@ export default function Home() {
     <AppShell
       title="Nosso Refúgio"
       subtitle={`${CONFIG.names} • Do lago ao altar • ${CONFIG.verseRef}`}
-      backHref="/" // aqui não faz falta, mas mantém padrão
+      backHref="/"
       rightSlot={
         <span className="hidden sm:inline-flex rounded-full border border-zinc-200 bg-white px-3 py-2 text-xs font-medium text-zinc-700">
           Hoje: {formatBR(today)}
@@ -36,7 +38,7 @@ export default function Home() {
         <RefugioCard>
           <div className="relative aspect-16/10 overflow-hidden rounded-3xl border border-zinc-100 bg-white">
             <Image
-              src="/photos/principal.jpg"
+              src={`${BASE}/photos/principal.jpg`}
               alt="Foto do casamento"
               fill
               className="object-cover"
@@ -46,7 +48,9 @@ export default function Home() {
           </div>
 
           <div className="mt-4">
-            <div className="text-sm font-semibold text-zinc-900">Um toque, e você lembra:</div>
+            <div className="text-sm font-semibold text-zinc-900">
+              Um toque, e você lembra:
+            </div>
             <div className="mt-1 text-sm leading-relaxed text-zinc-600">
               Deus cuidou do começo, cuidou do caminho e continua cuidando de nós.
               Quando bater saudade, abre o seu refúgio e respira.
@@ -58,7 +62,9 @@ export default function Home() {
           <SectionBox title="Mensagem do dia">
             {msg}
             {"\n\n"}
-            <span className="text-zinc-500">Abra a página de mensagens para ver mais.</span>
+            <span className="text-zinc-500">
+              Abra a página de mensagens para ver mais.
+            </span>
           </SectionBox>
 
           <div className="grid gap-2">
