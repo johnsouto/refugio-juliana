@@ -6,7 +6,7 @@ import SectionBox from "@/components/SectionBox";
 import { Calendar } from "@/components/ui/calendar";
 
 type LoveEvent = {
-  date: string;      // "YYYY-MM-DD"
+  date: string; // "YYYY-MM-DD"
   title: string;
   message: string;
   emoji?: string;
@@ -85,9 +85,9 @@ const LOVE_EVENTS: LoveEvent[] = [
   },
 ];
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 function toDateOnly(d: Date) {
-  // normaliza para evitar bug de fuso
   return new Date(d.getFullYear(), d.getMonth(), d.getDate());
 }
 
@@ -114,7 +114,6 @@ export default function Page() {
   const selectedIso = selected ? iso(selected) : null;
   const todaysEvents = selectedIso ? eventMap.get(selectedIso) ?? [] : [];
 
-  // Dias marcados (para o calendário destacar)
   const markedDays = useMemo(() => {
     return Array.from(eventMap.keys()).map((s) => {
       const [y, m, d] = s.split("-").map(Number);
@@ -131,8 +130,18 @@ export default function Page() {
       subtitle="Datas, memórias e promessas — com Deus no centro"
       backHref="/"
     >
-      <div className="grid gap-4 lg:grid-cols-[1fr_1fr]">
-        <div className="rounded-3xl border border-zinc-200 bg-white p-3 shadow-soft">
+      <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+        {/* CALENDÁRIO */}
+        <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm">
+          <div className="mb-3 flex items-center justify-between">
+            <div className="text-sm font-semibold text-zinc-900">
+              Toque em um dia
+            </div>
+            <div className="text-xs text-zinc-500">
+              Dica: dias com ♥ têm algo especial
+            </div>
+          </div>
+
           <Calendar
             mode="single"
             selected={selected}
@@ -140,15 +149,47 @@ export default function Page() {
             modifiers={{ marked: markedDays }}
             modifiersClassNames={{
               marked:
-                "relative after:content-['♥'] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:text-xs after:text-pink-600",
+                "relative after:content-['♥'] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:text-[10px] after:text-pink-600",
             }}
-            className="rounded-2xl"
+            className="w-full rounded-2xl"
+            classNames={{
+              // aumenta tudo
+              months: "w-full",
+              month: "w-full space-y-4",
+              caption: "flex justify-center pt-1 relative items-center",
+              caption_label: "text-lg font-semibold text-zinc-900",
+              nav: "space-x-2 flex items-center",
+              nav_button:
+                "h-10 w-10 rounded-full border border-zinc-200 bg-white hover:bg-zinc-50 text-zinc-700",
+              table: "w-full border-collapse space-y-2",
+              head_row: "flex w-full",
+              head_cell:
+                "w-full flex-1 text-center text-[12px] font-medium text-zinc-500",
+              row: "flex w-full mt-2",
+              cell: "relative w-full flex-1 p-1",
+              day:
+                "h-12 w-full rounded-xl border border-transparent hover:border-zinc-200 hover:bg-zinc-50 text-base font-medium text-zinc-900",
+              day_selected:
+                "bg-zinc-900 text-white hover:bg-zinc-900 hover:text-white",
+              day_today:
+                "border border-pink-300 bg-pink-50 text-zinc-900",
+              day_outside:
+                "text-zinc-300 opacity-70",
+              day_disabled:
+                "text-zinc-300 opacity-50",
+            }}
           />
-          <div className="mt-2 text-xs text-zinc-500">
-            Dica: os dias com ♥ têm algo especial.
+
+          <div className="mt-4 rounded-2xl border border-zinc-200 bg-zinc-50 p-4 text-sm text-zinc-700">
+            <div className="font-semibold">Quer deixar ainda mais especial?</div>
+            <div className="mt-1 text-zinc-600">
+              Eu posso colocar um “modo surpresa”: em dias comuns, aparece uma
+              frase curta e romântica, como um abraço.
+            </div>
           </div>
         </div>
 
+        {/* PAINEL DO DIA */}
         <SectionBox title={selectedIso ? `Refúgio — ${selectedIso}` : "Refúgio"}>
           {todaysEvents.length === 0 ? (
             <span className="text-zinc-600">{defaultMessage}</span>
@@ -170,6 +211,20 @@ export default function Page() {
               ))}
             </div>
           )}
+
+          <div className="mt-4 text-xs text-zinc-500">
+            Feito com amor. Um toque, e eu estou perto.
+          </div>
+
+          {/* Linkzinho opcional pra voltar */}
+          <div className="mt-3">
+            <a
+              href={`${BASE}/`}
+              className="inline-flex rounded-full border border-zinc-200 bg-white px-4 py-2 text-xs font-medium text-zinc-700 hover:bg-zinc-50"
+            >
+              Voltar para o início
+            </a>
+          </div>
         </SectionBox>
       </div>
     </AppShell>
