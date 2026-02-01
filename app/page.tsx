@@ -117,6 +117,13 @@ export default function Home() {
           variant="secondary"
         />
         <NavButton
+          href="/calendario"
+          title="Calendário do nosso amor"
+          desc="Datas especiais, memórias e mensagens."
+          emoji="🗓️"
+          variant="primary"
+        />
+        <NavButton
           href="/audios"
           title="Ouvir minha voz"
           desc="Três áudios curtos para aquecer o coração."
