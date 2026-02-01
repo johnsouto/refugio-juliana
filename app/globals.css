@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-@plugin "tailwindcss-animate";
-@import "tw-animate-css";
-
 @custom-variant dark (&:is(.dark *));
 
 /* Variáveis do tema (claro/escuro) */
@@ -42,12 +39,7 @@ body {
 .loader-bar {
   height: 100%;
   width: 40%;
-  background: linear-gradient(
-    90deg,
-    #ec4899,
-    #a855f7,
-    #6366f1
-  );
+  background: linear-gradient(90deg, #ec4899, #a855f7, #6366f1);
   animation: loaderMove 380ms ease-out forwards;
 }
 
