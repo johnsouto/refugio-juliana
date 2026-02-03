@@ -154,7 +154,7 @@ export default function Page() {
             modifiers={{ marked: markedDays }}
             modifiersClassNames={{
               marked:
-                "relative after:content-['♥'] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:text-[10px] after:text-rose-500 ring-1 ring-rose-200",
+                "relative after:content-[''] after:absolute after:bottom-1.5 after:left-1/2 after:-translate-x-1/2 after:h-1 after:w-1 after:rounded-full after:bg-blue-600",
             }}
             className="w-full rounded-2xl border border-zinc-200 bg-white p-3"
             classNames={{
@@ -169,15 +169,15 @@ export default function Page() {
               table: "w-full border-separate border-spacing-2",
               head_row: "grid grid-cols-7 gap-2",
               head_cell:
-                "w-full flex-1 text-center text-[12px] font-medium text-zinc-500",
+                "w-full flex-1 text-center text-[11px] font-medium text-zinc-400",
               row: "grid grid-cols-7 gap-2",
               cell: "relative w-full p-0",
               day:
-                "h-10 md:h-12 w-full rounded-xl border border-transparent hover:border-zinc-200 hover:bg-zinc-50 text-sm md:text-base font-medium text-zinc-900 transition-colors",
+                "h-11 md:h-12 w-full rounded-xl border border-transparent hover:bg-zinc-50 text-sm md:text-base font-medium text-zinc-900 transition-colors flex items-start justify-start px-2 pt-2",
               day_selected:
-                "bg-zinc-900 text-white hover:bg-zinc-900 hover:text-white shadow-md shadow-zinc-900/20",
+                "bg-blue-600 text-white hover:bg-blue-600 hover:text-white",
               day_today:
-                "border border-rose-300 bg-rose-50 text-zinc-900",
+                "border border-blue-500 text-zinc-900",
               day_outside:
                 "text-zinc-300 opacity-70",
               day_disabled:
