@@ -132,12 +132,17 @@ export default function Page() {
     >
       <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         {/* CALENDÁRIO */}
-        <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm">
-          <div className="mb-3 flex items-center justify-between">
-            <div className="text-sm font-semibold text-zinc-900">
-              Toque em um dia
+        <div className="rounded-3xl border border-rose-100/80 bg-gradient-to-br from-white via-rose-50 to-pink-100/60 p-5 shadow-lg shadow-rose-100/60">
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-rose-500">
+                calendário
+              </div>
+              <div className="text-base font-semibold text-zinc-900">
+                Toque em um dia
+              </div>
             </div>
-            <div className="text-xs text-zinc-500">
+            <div className="rounded-full border border-rose-200/70 bg-white/80 px-3 py-1 text-[11px] font-medium text-rose-600 backdrop-blur">
               Dica: dias com ♥ têm algo especial
             </div>
           </div>
@@ -149,9 +154,9 @@ export default function Page() {
             modifiers={{ marked: markedDays }}
             modifiersClassNames={{
               marked:
-                "relative after:content-['♥'] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:text-[10px] after:text-pink-600",
+                "relative after:content-['♥'] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:text-[10px] after:text-rose-500",
             }}
-            className="w-full rounded-2xl"
+            className="w-full rounded-2xl bg-white/80 p-2 backdrop-blur"
             classNames={{
               // aumenta tudo
               months: "w-full",
@@ -160,7 +165,7 @@ export default function Page() {
               caption_label: "text-lg font-semibold text-zinc-900",
               nav: "space-x-2 flex items-center",
               nav_button:
-                "h-10 w-10 rounded-full border border-zinc-200 bg-white hover:bg-zinc-50 text-zinc-700",
+                "h-10 w-10 rounded-full border border-rose-200/70 bg-white hover:bg-rose-50 text-rose-700",
               table: "w-full border-collapse space-y-2",
               head_row: "flex w-full",
               head_cell:
@@ -168,11 +173,11 @@ export default function Page() {
               row: "flex w-full mt-2",
               cell: "relative w-full flex-1 p-1",
               day:
-                "h-12 w-full rounded-xl border border-transparent hover:border-zinc-200 hover:bg-zinc-50 text-base font-medium text-zinc-900",
+                "h-10 md:h-12 w-full rounded-xl border border-transparent hover:border-rose-200 hover:bg-rose-50 text-sm md:text-base font-medium text-zinc-900 transition-colors",
               day_selected:
-                "bg-zinc-900 text-white hover:bg-zinc-900 hover:text-white",
+                "bg-zinc-900 text-white hover:bg-zinc-900 hover:text-white shadow-md shadow-zinc-900/20",
               day_today:
-                "border border-pink-300 bg-pink-50 text-zinc-900",
+                "border border-rose-300 bg-rose-50 text-zinc-900",
               day_outside:
                 "text-zinc-300 opacity-70",
               day_disabled:
@@ -180,8 +185,10 @@ export default function Page() {
             }}
           />
 
-          <div className="mt-4 rounded-2xl border border-zinc-200 bg-zinc-50 p-4 text-sm text-zinc-700">
-            <div className="font-semibold">Quer deixar ainda mais especial?</div>
+          <div className="mt-4 rounded-2xl border border-rose-200/70 bg-white/80 p-4 text-sm text-zinc-700 backdrop-blur">
+            <div className="font-semibold text-zinc-900">
+              Quer deixar ainda mais especial?
+            </div>
             <div className="mt-1 text-zinc-600">
               Eu posso colocar um “modo surpresa”: em dias comuns, aparece uma
               frase curta e romântica, como um abraço.
@@ -190,7 +197,8 @@ export default function Page() {
         </div>
 
         {/* PAINEL DO DIA */}
-        <SectionBox title={selectedIso ? `Refúgio — ${selectedIso}` : "Refúgio"}>
+        <div className="rounded-3xl border border-zinc-200/80 bg-gradient-to-br from-white via-white to-amber-50/60 p-3 shadow-lg shadow-amber-100/60">
+          <SectionBox title={selectedIso ? `Refúgio — ${selectedIso}` : "Refúgio"}>
           {todaysEvents.length === 0 ? (
             <span className="text-zinc-600">{defaultMessage}</span>
           ) : (
@@ -198,7 +206,7 @@ export default function Page() {
               {todaysEvents.map((ev, idx) => (
                 <div
                   key={idx}
-                  className="rounded-2xl border border-zinc-200 bg-white p-4"
+                  className="rounded-2xl border border-amber-200/70 bg-gradient-to-br from-white to-amber-50 p-4 shadow-sm"
                 >
                   <div className="text-sm font-semibold text-zinc-900">
                     {ev.emoji ? `${ev.emoji} ` : ""}
@@ -225,7 +233,8 @@ export default function Page() {
               Voltar para o início
             </a>
           </div>
-        </SectionBox>
+          </SectionBox>
+        </div>
       </div>
     </AppShell>
   );
