@@ -132,17 +132,17 @@ export default function Page() {
     >
       <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         {/* CALENDÁRIO */}
-        <div className="rounded-3xl border border-rose-100/80 bg-gradient-to-br from-white via-rose-50 to-pink-100/60 p-5 shadow-lg shadow-rose-100/60">
+        <div className="rounded-3xl border border-zinc-200 bg-white p-5">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
             <div>
-              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-rose-500">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
                 calendário
               </div>
               <div className="text-base font-semibold text-zinc-900">
                 Toque em um dia
               </div>
             </div>
-            <div className="rounded-full border border-rose-200/70 bg-white/80 px-3 py-1 text-[11px] font-medium text-rose-600 backdrop-blur">
+            <div className="rounded-full border border-zinc-200 bg-white px-3 py-1 text-[11px] font-medium text-zinc-600">
               Dica: dias com ♥ têm algo especial
             </div>
           </div>
@@ -154,9 +154,9 @@ export default function Page() {
             modifiers={{ marked: markedDays }}
             modifiersClassNames={{
               marked:
-                "relative after:content-['♥'] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:text-[10px] after:text-rose-500",
+                "relative after:content-['♥'] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:text-[10px] after:text-rose-500 ring-1 ring-rose-200",
             }}
-            className="w-full rounded-2xl bg-white/80 p-2 backdrop-blur"
+            className="w-full rounded-2xl border border-zinc-200 bg-white p-3"
             classNames={{
               // aumenta tudo
               months: "w-full",
@@ -165,15 +165,15 @@ export default function Page() {
               caption_label: "text-lg font-semibold text-zinc-900",
               nav: "space-x-2 flex items-center",
               nav_button:
-                "h-10 w-10 rounded-full border border-rose-200/70 bg-white hover:bg-rose-50 text-rose-700",
-              table: "w-full border-collapse space-y-2",
-              head_row: "flex w-full",
+                "h-10 w-10 rounded-full border border-zinc-200 bg-white hover:bg-zinc-50 text-zinc-700",
+              table: "w-full border-separate border-spacing-2",
+              head_row: "grid grid-cols-7 gap-2",
               head_cell:
                 "w-full flex-1 text-center text-[12px] font-medium text-zinc-500",
-              row: "flex w-full mt-2",
-              cell: "relative w-full flex-1 p-1",
+              row: "grid grid-cols-7 gap-2",
+              cell: "relative w-full p-0",
               day:
-                "h-10 md:h-12 w-full rounded-xl border border-transparent hover:border-rose-200 hover:bg-rose-50 text-sm md:text-base font-medium text-zinc-900 transition-colors",
+                "h-10 md:h-12 w-full rounded-xl border border-transparent hover:border-zinc-200 hover:bg-zinc-50 text-sm md:text-base font-medium text-zinc-900 transition-colors",
               day_selected:
                 "bg-zinc-900 text-white hover:bg-zinc-900 hover:text-white shadow-md shadow-zinc-900/20",
               day_today:
@@ -185,7 +185,7 @@ export default function Page() {
             }}
           />
 
-          <div className="mt-4 rounded-2xl border border-rose-200/70 bg-white/80 p-4 text-sm text-zinc-700 backdrop-blur">
+          <div className="mt-4 rounded-2xl border border-zinc-200 bg-zinc-50 p-4 text-sm text-zinc-700">
             <div className="font-semibold text-zinc-900">
               Quer deixar ainda mais especial?
             </div>
@@ -197,7 +197,7 @@ export default function Page() {
         </div>
 
         {/* PAINEL DO DIA */}
-        <div className="rounded-3xl border border-zinc-200/80 bg-gradient-to-br from-white via-white to-amber-50/60 p-3 shadow-lg shadow-amber-100/60">
+        <div className="rounded-3xl border border-zinc-200 bg-white p-3">
           <SectionBox title={selectedIso ? `Refúgio — ${selectedIso}` : "Refúgio"}>
           {todaysEvents.length === 0 ? (
             <span className="text-zinc-600">{defaultMessage}</span>
@@ -206,7 +206,7 @@ export default function Page() {
               {todaysEvents.map((ev, idx) => (
                 <div
                   key={idx}
-                  className="rounded-2xl border border-amber-200/70 bg-gradient-to-br from-white to-amber-50 p-4 shadow-sm"
+                  className="rounded-2xl border border-zinc-200 bg-white p-4"
                 >
                   <div className="text-sm font-semibold text-zinc-900">
                     {ev.emoji ? `${ev.emoji} ` : ""}
